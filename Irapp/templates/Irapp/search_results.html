@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Search Results</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+
+      h1 {
+        text-align: center;
+        color: #4caf50;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      tr:hover {
+        background-color: #f1f1f1;
+      }
+
+      a {
+        color: #4caf50;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .score {
+        width: 10%;
+      }
+
+      .document {
+        width: 90%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Search Results for "{{ query }}"</h1>
+      <table>
+        <tr>
+          <th class="score">Score</th>
+          <th class="document">Document</th>
+        </tr>
+        {% for result in results %}
+        <tr>
+          <td>{{ result.1|floatformat:2 }}</td>
+          <td>
+            <a href="#">{{ result.0 }}</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </body>
+</html>
